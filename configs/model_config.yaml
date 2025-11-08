@@ -1,0 +1,59 @@
+# Model Configuration for Optical Music Recognition
+
+# OMR Model Configuration
+omr_model:
+  vision_encoder_name: "google/vit-base-patch16-224"  # Vision encoder model from HuggingFace
+  text_decoder_name: "custom"  # Use "custom" for CustomTextDecoder
+  mlp_layers: [1024, 512, 256]  # Hidden dimensions for MLP projection layers
+
+# Custom Text Decoder Configuration
+text_decoder:
+  vocab_size: 5000  # Size of vocabulary
+  d_model: 256  # Model dimension (embedding dimension)
+  max_seq_len: 512  # Maximum sequence length
+  n_layers: 6  # Number of transformer encoder layers
+  n_heads: 8  # Number of attention heads
+  emb_dim: 256  # Output embedding dimension
+  mlp_ratio: 4  # MLP expansion ratio in transformer blocks
+
+# Training Configuration
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  num_epochs: 100
+  warmup_steps: 1000
+  weight_decay: 0.01
+  gradient_clip: 1.0
+
+# Model variants for different experiments
+model_variants:
+  small:
+    text_decoder:
+      vocab_size: 5000
+      d_model: 128
+      max_seq_len: 256
+      n_layers: 4
+      n_heads: 4
+      emb_dim: 128
+    mlp_layers: [512, 256]
+
+  medium:
+    text_decoder:
+      vocab_size: 5000
+      d_model: 256
+      max_seq_len: 512
+      n_layers: 6
+      n_heads: 8
+      emb_dim: 256
+    mlp_layers: [1024, 512, 256]
+
+  large:
+    text_decoder:
+      vocab_size: 10000
+      d_model: 512
+      max_seq_len: 1024
+      n_layers: 12
+      n_heads: 16
+      emb_dim: 512
+    mlp_layers: [2048, 1024, 512]
+

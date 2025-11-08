@@ -1,0 +1,4 @@
+experiment_name: "default_run" 
+checkpoint_dir: "models/checkpoints" 
+data_dir: "data/processed" 
+output_dir: "results/predictions" 
