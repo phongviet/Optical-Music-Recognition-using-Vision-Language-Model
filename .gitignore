@@ -5,3 +5,7 @@ data/raw/*
 data/processed/* 
 results/* 
 models/checkpoints/* 
+/data/abc/
+/data/png/
+/data/raw/
+/data/processed/
